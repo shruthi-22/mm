@@ -1,8 +1,7 @@
-#%%
+
 from math import ceil, floor, isnan
 import pandas as pd
 
-#%%
 def get_y_star(d,h,k):
   return pow((2*d*k)/h, 0.5)
 
@@ -51,16 +50,12 @@ def get_total_inventory_cost(cur):
     return d*c
   return cur_cost( cur['Demand'], cur['HoldingCost'], cur['SetupCost'] ) + additional_cost(cur['Demand'], cur['AdditionalCost'])
 
-#%%
 data = pd.read_csv('data.csv')
 
-# %%
-# Get total inventory cost
 for i,cur in data.iterrows():
   units_to_order, threshold = get_optimal_inventory_policy(cur)
   print(f"Order {ceil(units_to_order)} units when the inventory reaches {ceil(threshold)} units")
   print(f"Total Inventory cost is : {get_total_inventory_cost(cur)}")
 
-# %%
-# 100,100,0.02,null,12
-# 600,81,0.03,0.6,null
+#Demand,SetupCost,HoldingCost,AdditionalCost,LeadTime
+#100,100,0.02,null,12
