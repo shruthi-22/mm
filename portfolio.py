@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("data3.csv")
+df = pd.read_csv("data.csv")
 E_k1 = 0
 for i, row in df.iterrows():
   E_k1 += row["prob"]*row["k1"]
@@ -39,3 +39,9 @@ print(f"corr(k1,k2) = {corr_coeff}")
 # recession -10 30 0.2
 # stag        0 20 0.5
 # boom       10 50 0.3
+
+# data - percentage divided by 10
+# scenario,k1,k2,prob
+# recession,-0.1,0.3,0.2
+# stag,0,0.2,0.5
+# boom,0.1,0.5,0.3
